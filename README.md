@@ -18,3 +18,12 @@
 ## Data
 
 - Uploads are stored locally in `app_data/` (SQLite database + image files).
+
+## Automatic testing
+
+- Install dev dependencies (once):
+  - `uv sync --group dev`
+- Run the test suite:
+  - `uv run pytest`
+
+The tests include unit tests for the storage layer and lightweight Streamlit UI smoke tests using `streamlit.testing.v1.AppTest`.
