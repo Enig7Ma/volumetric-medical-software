@@ -2,6 +2,8 @@
 
 This documentation is generated with **Doxygen** from the Python source code.
 
+The documentation header displays the current project version (taken from `uv version --short` when you run the docs generator).
+
 ## Project overview
 
 A small Streamlit app that lets you:
