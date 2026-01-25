@@ -21,6 +21,10 @@ A small Streamlit app that lets you:
 - `app.storage`: SQLite + file storage for uploads
 - `app.constants`: Tag lists used by the UI
 
+## App usage
+
+- See the user-facing walkthrough in [App Usage](docs/app_usage.md).
+
 ## Build the docs
 
 On macOS (Homebrew):
