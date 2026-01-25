@@ -1,3 +1,5 @@
+"""Streamlit page: upload an image with metadata."""
+
 import streamlit as st
 
 from app.constants import IMAGING_TAGS, OTHER_TAGS
@@ -5,6 +7,7 @@ from app.storage import ensure_storage, save_upload
 
 
 def main() -> None:
+    """Render the Upload page."""
     st.set_page_config(page_title="Upload", page_icon="⬆️", layout="wide")
     ensure_storage()
 

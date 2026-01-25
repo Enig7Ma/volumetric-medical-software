@@ -12,6 +12,8 @@ from typing import Iterable
 
 @dataclass(frozen=True)
 class ImageRecord:
+    """A persisted upload and its metadata."""
+
     id: int
     filename: str
     original_name: str
@@ -22,18 +24,22 @@ class ImageRecord:
 
 
 def data_dir() -> Path:
+    """Return the base directory for local app data."""
     return Path(__file__).resolve().parent.parent / "app_data"
 
 
 def images_dir() -> Path:
+    """Return the directory where uploaded images are stored."""
     return data_dir() / "images"
 
 
 def db_path() -> Path:
+    """Return the path to the SQLite database file."""
     return data_dir() / "app.db"
 
 
 def ensure_storage() -> None:
+    """Create the storage directories and initialize the database if needed."""
     images_dir().mkdir(parents=True, exist_ok=True)
     data_dir().mkdir(parents=True, exist_ok=True)
     _init_db()
@@ -68,6 +74,10 @@ def _init_db() -> None:
 
 
 def _safe_extension(mime_type: str | None, original_name: str) -> str:
+    """Choose a safe image extension from MIME type or file name.
+
+    Falls back to `.img` if the type is unknown.
+    """
     if mime_type == "image/jpeg":
         return ".jpg"
     if mime_type == "image/png":
@@ -91,6 +101,10 @@ def save_upload(
     description: str,
     tags: list[str],
 ) -> int:
+    """Persist a new upload to disk and store its metadata in SQLite.
+
+    Returns the new database row ID.
+    """
     ensure_storage()
 
     ext = _safe_extension(mime_type, original_name)
@@ -125,6 +139,7 @@ def save_upload(
 
 
 def count_images() -> int:
+    """Return the total number of stored uploads."""
     con = _connect()
     try:
         row = con.execute("SELECT COUNT(*) AS c FROM images").fetchone()
@@ -134,6 +149,7 @@ def count_images() -> int:
 
 
 def list_images() -> list[ImageRecord]:
+    """Return all stored uploads, newest first."""
     con = _connect()
     try:
         rows = con.execute(
@@ -162,6 +178,7 @@ def list_images() -> list[ImageRecord]:
 
 
 def read_image_bytes(filename: str) -> bytes:
+    """Read raw bytes for a stored image file."""
     path = images_dir() / filename
     with open(path, "rb") as f:
         return f.read()
@@ -210,6 +227,10 @@ def search_images(
     description_query: str,
     tags: list[str],
 ) -> list[ImageRecord]:
+    """Search stored uploads by case/description substrings and tags.
+
+    Tag filtering uses an AND rule: a record must contain all selected tags.
+    """
     records = list_images()
 
     case_q = case_query.strip().lower()

@@ -11,3 +11,5 @@ wheels/
 
 # Local app data
 app_data/
+
+.DS_Store

@@ -1,3 +1,5 @@
+"""Streamlit page: search and delete uploaded images."""
+
 import streamlit as st
 
 from app.constants import IMAGING_TAGS, OTHER_TAGS
@@ -5,6 +7,7 @@ from app.storage import delete_image, ensure_storage, read_image_bytes, search_i
 
 
 def main() -> None:
+    """Render the Search page."""
     st.set_page_config(page_title="Search", page_icon="🔎", layout="wide")
     ensure_storage()
 
