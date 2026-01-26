@@ -27,6 +27,10 @@ A small Streamlit app that lets you:
 
 - See the user-facing walkthrough in [App Usage](docs/app_usage.md).
 
+## Changelog
+
+- See the release notes in [Changelog](docs/changelog.md).
+
 ## Build the docs
 
 On macOS (Homebrew):
