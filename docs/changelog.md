@@ -4,6 +4,15 @@ All notable changes to **Medical Image Vault** will be documented in this file.
 
 This project follows a simple versioned history; version numbers come from `pyproject.toml`.
 
+## 0.1.1
+
+### Developer tooling
+
+- **CI “outer tests”**
+
+  - The full `pytest` suite runs in GitHub Actions via `uv` (`uv sync --group dev` + `uv run pytest`).
+  - Trigger: executed on every `push` (all branches).
+
 ## 0.1.0
 
 Initial release.
