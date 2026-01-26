@@ -27,3 +27,19 @@
   - `uv run pytest`
 
 The tests include unit tests for the storage layer and lightweight Streamlit UI smoke tests using `streamlit.testing.v1.AppTest`.
+
+## Documentation (Doxygen)
+
+Generate API docs from the Python source using Doxygen.
+
+Prerequisites (macOS):
+
+- `brew install doxygen graphviz`
+
+Build the docs:
+
+- `./scripts/gen_docs.sh`
+
+Open the generated site:
+
+- `open build/docs/html/index.html`
