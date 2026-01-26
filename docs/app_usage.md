@@ -2,66 +2,73 @@
 
 This page describes how to use the **Medical Image Vault** Streamlit app.
 
-## Start the app
+## Home screen
 
-From the repo root:
+When you open the application, you start on the **Home** page.
 
-- `streamlit run main.py`
+Here you can:
 
-You should see the Home page with quick links to the Upload and Search pages.
+- See a short description of the application
+- Use quick links to:
+  - **Upload** new images
+  - **Search** existing images
+- View the current number of uploaded images
 
-## Upload an image
+From this page, you can immediately navigate to the task you want to perform.
 
-Go to the Upload page (`pages/1_Upload.py`).
+## Uploading an image
 
-1. **Upload an image** using the file picker.
-   - Supported formats: PNG, JPG/JPEG, WEBP
-2. Fill in **Medical case** (free text).
-3. Fill in **Description** (free text).
-4. Choose **Tags** from the provided lists (optional).
-5. Click **Save**.
+On the **Upload** page, you can add a new medical image to the vault.
 
-After saving, the app shows the assigned **ID** and provides a link to the Search page.
+### To upload an image
 
-## Search for uploads
+1. **Select an image**
+   - Drag and drop a file into the upload area, or click **Browse files**
+   - Supported formats: PNG, JPG, JPEG, WEBP
+2. **Enter metadata**
+   - **Medical case**: enter a case identifier or name
+   - **Description**: enter notes or contextual information about the image
+3. **Assign tags** (optional)
+   - Select relevant tags under categories such as **Imaging** and **Other**
+   - Tags help you organize images and make them easier to find later
+4. **Save the image**
+   - Click **Save** to upload the image and store all associated metadata
 
-Go to the Search page (`pages/2_Search.py`).
+After saving, the image becomes immediately available in the Search view.
 
-In the sidebar filters:
+Note: the current UI requires both **Medical case** and **Description** to be non-empty before enabling **Save**.
 
-- **Case contains**: substring match (case-insensitive)
-- **Description contains**: substring match (case-insensitive)
-- **Tags**: select one or more tags
+## Searching and filtering images
 
-Tag filtering is an AND rule: results must contain **all** selected tags.
+On the **Search** page, you can browse and locate previously uploaded images.
 
-Results are displayed as a grid of images. Each result shows:
+You can:
 
-- Record **ID**
-- Original filename
-- Case, tags, UTC upload timestamp, and description
+- View all uploaded images as thumbnails
+- See basic information such as image ID and filename
+- Filter results using:
+  - Medical case text
+  - Description text
+  - Tags (for example, imaging modality)
 
-## Delete an upload
+The displayed results update automatically as you adjust the filters.
 
-On the Search results, open **Details** for an item and click **Delete**.
+## Viewing image details
 
-- If the record exists, it is removed from the SQLite database.
-- The corresponding stored image file is deleted on a best-effort basis.
+Each image entry includes a **Details** section that you can expand.
 
-## Where data is stored
+In the details view, you can see:
 
-Uploads are stored locally in:
+- The medical case name
+- Assigned tags
+- The upload timestamp (UTC)
+- The full description
 
-- `app_data/app.db` (SQLite metadata)
-- `app_data/images/` (image files)
+This allows you to quickly understand the context of an image without opening it separately.
 
-## Notes and limitations
+## Managing images
 
-- This is a local, file-backed app intended for demos and small-scale usage.
-- Search uses in-memory filtering of stored records (fast for small datasets).
-- Upload timestamps are stored in UTC.
+- You can enter full screen mode by clicking the button on the top-right corner of the image.
+- If an image is no longer needed, you can delete it directly from the **Details** view by clicking **Delete**.
 
-## Troubleshooting
-
-- If the app starts but shows no pages, verify you’re launching from the repo root.
-- If uploads fail, ensure the process has write access to `app_data/`.
+Deleting permanently removes the image and its metadata from the vault.

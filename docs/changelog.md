@@ -4,6 +4,15 @@ All notable changes to **Medical Image Vault** will be documented in this file.
 
 This project follows a simple versioned history; version numbers come from `pyproject.toml`.
 
+## 0.1.2
+
+### Documentation
+
+- **App usage guide**
+
+  - Added a short user guide covering: Home page navigation, uploading (supported formats + required metadata), searching/filtering, viewing details, and deleting images.
+  - See: `docs/app_usage.md`
+
 ## 0.1.1
 
 ### Developer tooling
