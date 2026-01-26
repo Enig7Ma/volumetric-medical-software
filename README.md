@@ -30,16 +30,12 @@ The tests include unit tests for the storage layer and lightweight Streamlit UI 
 
 ## Documentation (Doxygen)
 
-Generate API docs from the Python source using Doxygen.
+This repo includes a Doxygen setup that generates HTML documentation into `build/docs/html/`.
 
-Prerequisites (macOS):
-
-- `brew install doxygen graphviz`
-
-Build the docs:
-
-- `./scripts/gen_docs.sh`
-
-Open the generated site:
-
-- `open build/docs/html/index.html`
+- Prerequisites:
+  - `doxygen` (and optionally `graphviz` for diagrams)
+  - On macOS: `brew install doxygen graphviz`
+- Generate docs from the repo root:
+  - `./scripts/gen_docs.sh`
+- View the result:
+  - open `build/docs/html/index.html`
