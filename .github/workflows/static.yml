@@ -50,6 +50,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - uses: mattnotmitt/doxygen-action@v1.9.5
+      - run: doxygen --version
       - name: Build static files
         id: build
         run: |
