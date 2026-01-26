@@ -1,9 +1,15 @@
+"""Streamlit entry point for the Medical Image Vault app.
+
+This module defines the Home page and links to the Upload/Search pages.
+"""
+
 import streamlit as st
 
 from app.storage import count_images, ensure_storage
 
 
 def main() -> None:
+    """Render the Home page."""
     st.set_page_config(page_title="Medical Image Vault", page_icon="🩺", layout="wide")
     ensure_storage()
 
